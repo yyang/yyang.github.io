@@ -1,5 +1,5 @@
 ---
-title: "Management - Trac"
+title: "Trac Installation"
 layout: "post"
 permalink: "/Management-Trac.html"
 uuid: "3727696360066202838"
@@ -19,6 +19,9 @@ author:
 published: "false"
 ---
 
-<div class="css-full-post-content js-full-post-content">
-The installation manual of Trac is too complicated - I've copied all commands here:<br /><br />Requires Python 2.5+, setuptools 0.6+, Genshi 0.6+ and SQLite (already installed with Python 2.5+)<br /><br /><code>$ sh setuptools-0.6c11-py2.6.egg<br />$ easy_install Genshi</code>
-</div>
+> Requires Python 2.5+, setuptools 0.6+, Genshi 0.6+ and SQLite (already installed with Python 2.5+)
+
+{% highlight bash %}
+$ sh setuptools-0.6c11-py2.6.egg
+$ easy_install Genshi
+{% endhighlight %}
