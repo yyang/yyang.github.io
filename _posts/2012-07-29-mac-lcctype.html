@@ -1,0 +1,23 @@
+---
+title: "Mac - LC_CTYPE"
+layout: "post"
+permalink: "/2012/07/mac-lcctype.html"
+uuid: "2857869496702637614"
+guid: "tag:blogger.com,1999:blog-7751875784341660635.post-2857869496702637614"
+date: "2012-07-29 10:57:00"
+updated: "2012-07-29 10:57:47"
+description: 
+blogger:
+    siteid: "7751875784341660635"
+    postid: "2857869496702637614"
+    comments: "0"
+categories: 
+author: 
+    name: "Yi Yang"
+    url: "https://www.blogger.com/profile/13529726289633825935?rel=author"
+    image: "https://img2.blogblog.com/img/b16-rounded.gif"
+---
+
+<div class="css-full-post-content js-full-post-content">
+To solve this:<br /><code>warning: setlocale: LC_CTYPE: cannot change locale (UTF-8)</code><br />Typically appeared when using OS X Lion and ssh to a remote server.<br /><br />Add the following line to your <code>~/.bash_profile</code> of OS X:<br /><code>export LC_CTYPE="en_US.UTF-8"<code>
+</div>

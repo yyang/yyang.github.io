@@ -1,0 +1,23 @@
+---
+title: "SSH Tunnel"
+layout: "post"
+permalink: "/2015/04/ssh-tunnel.html"
+uuid: "930866353108504830"
+guid: "tag:blogger.com,1999:blog-7751875784341660635.post-930866353108504830"
+date: "2015-04-08 04:12:00"
+updated: "2015-04-08 04:12:31"
+description: 
+blogger:
+    siteid: "7751875784341660635"
+    postid: "930866353108504830"
+    comments: "0"
+categories: [SSH]
+author: 
+    name: "Yi Yang"
+    url: "https://www.blogger.com/profile/13529726289633825935?rel=author"
+    image: "https://img2.blogblog.com/img/b16-rounded.gif"
+---
+
+<div class="css-full-post-content js-full-post-content">
+I should list the useful SSH related things right here:<br /><br />1. Specify connection options<br /><code>ssh -i sunnybunny.pem -p 222 -vv steve@server.iyyang.com</code><br /><br />2. SSH Tunnel<br /><code>ssh -D 8080 -C -N username@example.com</code><br />This would forward all traffic to username@exmaple.com via socks, and we can further set up SOCKS proxy through 127.0.0.1:8080 in browser - to use example.com as a proxy.<br /><br />3. SSH Tunneling specific port<br /><code>ssh -L 9000:remoteserver:22 username@proxyserver.com</code><br /><code>ssh -p 9000 steve@localhost</code><br /><br /><br />
+</div>

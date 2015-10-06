@@ -1,0 +1,23 @@
+---
+title: "Linux - SSH Login Key"
+layout: "post"
+permalink: "/2012/07/linux-ssh-login-key.html"
+uuid: "5918395125324847242"
+guid: "tag:blogger.com,1999:blog-7751875784341660635.post-5918395125324847242"
+date: "2012-07-28 12:32:00"
+updated: "2012-07-28 12:47:03"
+description: 
+blogger:
+    siteid: "7751875784341660635"
+    postid: "5918395125324847242"
+    comments: "0"
+categories: [Log-In Key, RSA, PEM, SSH]
+author: 
+    name: "Yi Yang"
+    url: "https://www.blogger.com/profile/13529726289633825935?rel=author"
+    image: "https://img2.blogblog.com/img/b16-rounded.gif"
+---
+
+<div class="css-full-post-content js-full-post-content">
+There are a number of tutorials teaching how to set up SSH Client Key, however they will require a copy of private key inside your <code>./ssh/known_hosts</code>. &nbsp; It could be difficult to manage and brings troubles when you are accessing from another device.<br /><br />Method (operates on local machine):<br /><br /><code># ssh-keygen -t rsa<br /># cat ~/.ssh/id_rsa.pub | ssh user@server 'cat &gt;&gt; .ssh/authorized_keys'<br /># openssl rsa -in ~/.ssh/id_rsa -out key.pem </code><br /><br />The last line was used to generate a .pem key file, so that we can use this key file to access the server, via:<br /><br /><code># ssh -i key.pem user@server</code><br /><br />Connecting via Windows:<br /><a href="http://tuts.pinehead.tv/2011/11/21/connect-to-amazon-ec2-using-putty-private-key-on-windows/">http://tuts.pinehead.tv/2011/11/21/connect-to-amazon-ec2-using-putty-private-key-on-windows/</a><br /><br />Reference on RSA Key:<br /><a href="http://en.wikipedia.org/wiki/RSA_(algorithm)">http://en.wikipedia.org/wiki/RSA_(algorithm)</a>
+</div>

@@ -1,0 +1,23 @@
+---
+title: "A glance at CentOS 7"
+layout: "post"
+permalink: "/2014/09/a-glance-at-centos-7.html"
+uuid: "5930571656743605996"
+guid: "tag:blogger.com,1999:blog-7751875784341660635.post-5930571656743605996"
+date: "2014-09-03 08:33:00"
+updated: "2014-12-03 03:13:20"
+description: 
+blogger:
+    siteid: "7751875784341660635"
+    postid: "5930571656743605996"
+    comments: "0"
+categories: 
+author: 
+    name: "Yi Yang"
+    url: "https://www.blogger.com/profile/13529726289633825935?rel=author"
+    image: "https://img2.blogblog.com/img/b16-rounded.gif"
+---
+
+<div class="css-full-post-content js-full-post-content">
+For some reason, I've started a CentOS 7 instance to manage some services. It has a bunch of nice features, including LinuX Containers.<br /><br />However, because of those changes, it is replacing some well-known components to better fit the latest development - specifically the isolation of namespace. Some significant updates includes:<br /><br /><h3>service --&gt; systemctl</h3>This is not a big change, but has more detailed control over different scope management. All the details are stored here: <code>/usr/lib/systemd/system</code> and you can further add new services.<br />For example, you can start mysql via: <code>systemctl start mariadb.service</code><br />Or if you want to start it permanently, via: <code>systemctl enable mariadb.service</code><br /><h3>iptables --&gt; firewalld</h3><code>firewalld</code>features zone management, as a better variant of iptables. By default the computer is put to <code>public</code> zone, therefore we will need to add some service and port support. Typically the commands includes:<br /><pre>firewall-cmd --add-port=222/tcp<br />firewall-cmd --add-service=http<br />sudo firewall-cmd --permanent --zone=public --add-port=22/tcp<br /></pre><br />And on my own server it looks like this:<br /><pre>[root@localhost ssh]# firewall-cmd --list-all<br />public (default, active)<br />  interfaces: ens32 virbr0<br />  sources: <br />  services: dhcpv6-client http ssh<br />  ports: 222/tcp 22/tcp<br />  masquerade: no<br />  forward-ports: <br />  icmp-blocks: <br />  rich rules: <br /></pre><pre><br /></pre><pre><span style="font-family: Times; white-space: normal;">We will need to restart the firewall after set up: </span><code style="white-space: normal;">sudo systemctl restart firewalld.service</code></pre><h3>enhanced selinux</h3>selinux not an easy task for starters, sometimes we are not clear about the which rule is actually blocking the entire thing.<br />To better deal with selinux (if you do not want to override all the nice settings), this article introduced some nice methods: <a href="https://wiki.gentoo.org/wiki/SELinux/Tutorials/Where_to_find_SELinux_permission_denial_details">Where to find SELinux permission denial details </a><br />The method includes setting <code>SELINUX=permissive</code> in <code>/etc/selinux/config</code>, and later grep AVC errors from <code>grep "type=AVC" /var/log/audit/audit.log</code>
+</div>

@@ -1,0 +1,23 @@
+---
+title: "First Impression on Node.js - Created a prototype website"
+layout: "post"
+permalink: "/2013/03/first-impression-on-nodejs-created.html"
+uuid: "654199000809585817"
+guid: "tag:blogger.com,1999:blog-7751875784341660635.post-654199000809585817"
+date: "2013-03-04 13:42:00"
+updated: "2013-03-04 13:42:50"
+description: 
+blogger:
+    siteid: "7751875784341660635"
+    postid: "654199000809585817"
+    comments: "0"
+categories: 
+author: 
+    name: "Yi Yang"
+    url: "https://www.blogger.com/profile/13529726289633825935?rel=author"
+    image: "https://img2.blogblog.com/img/b16-rounded.gif"
+---
+
+<div class="css-full-post-content js-full-post-content">
+1) Node.js is a really powerful tool nowadays, it has a huge number of plug-ins and is very friendly to developers. &nbsp; The philosophy - or at least you could build your gadget with such philosophy - of node.js is that you never need to mix-up multiple kinds of syntax, for example php and HTML or HTML and Javascript.<br /><br />2) I built my project with the following combination:<br /><ol><li>Express, for routing, APIs, etc.</li><li>Jade, for HTML - this is beautiful and much cleaner than XML-like syntax, meanwhile providing a number of great looping / conditional features.</li><li>Less CSS, for CSS, this is not very simplified as Stylus but it provides CSS-like syntax which is good so far, and one can easily hook this with external code to provide singular CSS file.</li><li>Font-Awesome, a very nice icon set - I used git submodule for the first time and the experience is good enough.</li></ol><br />3) Detailed procedures are listed as below: <code>npm install express<br />./node_modules/express/bin/express jade -c less<br />cd . && npm install<br />git submodule add git@github.com:FortAwesome/Font-Awesome.git public/stylesheets/fontawesome<br /></code>with the following <code>base.less</code><code>/* import reset script */<br />@import 'reset';<br /><br />/* set import script */<br />@base-url: '/';<br /><br />/* define fundamental colors */<br />@base-black: #3d3d3d;<br />@base-dark: #871e1f;<br />@base-medium: #c62c2d;<br />@base-light: #fbfbfb;<br /><br />/* import font set */<br />@import './fontawesome/less/font-awesome';<br />@FontAwesomePath: './fontawesome/font/';<br /><br />/* supporting retina display */<br />.background-image-set(@src, @fmt) {<br />  background-image: url(~"@{src}.@{fmt}");<br />  background-image: -webkit-image-set(<br />      ~"url(@{src}.@{fmt}) 1x",<br />      ~"url(@{src}@2x.@{fmt}) 2x");<br />  background-image: -moz-image-set(<br />      ~"url(@{src}.@{fmt}) 1x",<br />      ~"url(@{src}@2x.@{fmt}) 2x");<br />  background-image: -o-image-set(<br />      ~"url(@{src}.@{fmt}) 1x",<br />      ~"url(@{src}@2x.@{fmt}) 2x");<br />  background-image: -ms-image-set(<br />      ~"url(@{src}.@{fmt}) 1x",<br />      ~"url(@{src}@2x.@{fmt}) 2x");*/<br />}<br /><br /><br />body {<br />  background-color: @base-light;<br />  color: @base-black;<br />  font-family: 'Helvetica Neue', Helvetica, 'Segoe UI', STHeiti, Arial, "Microsoft Yahei","微软雅黑", "宋体", sans-serif;<br />  font-size: 1em;<br />}<br /><br />section {<br />  display: block;<br />  width: 100%;<br />}<br /></code>And the following <code>base.jade</code><code>!!! 5<br />//Copyright Steve Yang 2013.<br />html<br />  head<br />    title #{title} - Peppermint<br />    link(rel='stylesheet', href='/stylesheets/#{name}.css');<br />    block scripts<br />  body<br />    block content<br /></code><br />Pretty nice experience on HTML & CSS huh? will further route with API...
+</div>

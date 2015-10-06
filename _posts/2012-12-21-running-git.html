@@ -1,0 +1,23 @@
+---
+title: "Running Git with Github"
+layout: "post"
+permalink: "/2012/12/running-git.html"
+uuid: "5718635464321317608"
+guid: "tag:blogger.com,1999:blog-7751875784341660635.post-5718635464321317608"
+date: "2012-12-21 09:44:00"
+updated: "2012-12-21 09:46:06"
+description: 
+blogger:
+    siteid: "7751875784341660635"
+    postid: "5718635464321317608"
+    comments: "0"
+categories: [RSA, Git, SSH]
+author: 
+    name: "Yi Yang"
+    url: "https://www.blogger.com/profile/13529726289633825935?rel=author"
+    image: "https://img2.blogblog.com/img/b16-rounded.gif"
+---
+
+<div class="css-full-post-content js-full-post-content">
+Running Git with Github on Mac seems very easy, with the help from XCode. &nbsp; However running such configuration on Windows lacks of proper instruction.<br /><br />The steps are list as following:<br /><br /><ol><li>Download Git for Windows:&nbsp;<a href="http://git-scm.com/download/win">http://git-scm.com/download/win</a></li><li>Generate SSH Key, PuTTYgen is a great Windows tool:&nbsp;<a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">link</a><br />For mac user we can just use: <code>ssh-keygen -t rsa -C "your_email@youremail.com"</code></li><li>Paste your public key here:&nbsp;<a href="https://github.com/settings/ssh">https://github.com/settings/ssh</a></li><li>Test connection using: <code>ssh -T git@github.com</code></li></ol>
+</div>

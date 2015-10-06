@@ -1,0 +1,35 @@
+# Site settings
+title: Steve's Notes
+description: "A minimal blog template, build with Jekyll."
+url: "http://yyang.me"
+author:
+  name: "Steve Yang"
+  email: "hello@yyang.me"
+  url: "http://yyang.me"
+timezone: Asia/Shanghai
+
+# Build settings
+baseurl: / # Change this to your relative path (ex: /blog/), or leave just a /
+markdown: kramdown
+source: .
+destination: ./_site
+permalink: /:title
+paginate: 8
+paginate_path: /page:num/
+
+# Default values
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+
+# Custom variables
+version: "1.1.0"
+
+# Options
+custom_header: false
+custom_nav_footer: false
+reverse: false

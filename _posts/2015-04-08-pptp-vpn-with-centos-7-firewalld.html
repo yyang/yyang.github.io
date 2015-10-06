@@ -1,0 +1,23 @@
+---
+title: "PPTP VPN with CentOS 7 + firewalld"
+layout: "post"
+permalink: "/2015/04/pptp-vpn-with-centos-7-firewalld.html"
+uuid: "1531274636680376820"
+guid: "tag:blogger.com,1999:blog-7751875784341660635.post-1531274636680376820"
+date: "2015-04-08 04:11:00"
+updated: "2015-04-08 04:12:47"
+description: 
+blogger:
+    siteid: "7751875784341660635"
+    postid: "1531274636680376820"
+    comments: "0"
+categories: [VPN]
+author: 
+    name: "Yi Yang"
+    url: "https://www.blogger.com/profile/13529726289633825935?rel=author"
+    image: "https://img2.blogblog.com/img/b16-rounded.gif"
+---
+
+<div class="css-full-post-content js-full-post-content">
+I've recently tried to install PPTP VPN server on CentOS 7 but still having some issues. After spending sometime we figured out a way let the service properly working with firewalld.<br /><br />A detailed instruction is presented by Digital Ocean:&nbsp;https://www.digitalocean.com/community/questions/how-to-install-pptp-vpn-on-centos-7<br /><br />To make it working with <code>firewalld</code>, we've made a few updates, and the script is pasted here: <a href="https://gist.github.com/yyang/8298541b19594bd09402">gist</a><br /><br /><code>#!/bin/sh<br /> <br /># Install pptpd<br />rpm -Uvh http://download.fedoraproject.org/pub/epel/beta/7/x86_64/epel-release-7-1.noarch.rpm<br />yum -y install ppp pptpd<br /> <br /># pptpd settings<br />echo 'localip 10.10.0.1' &gt;&gt; /etc/pptpd.conf<br />echo 'remoteip 10.10.0.100-199' &gt;&gt; /etc/pptpd.conf<br />echo 'ms-dns 8.8.8.8' &gt;&gt; /etc/ppp/options.pptpd<br />echo 'ms-dns 8.8.4.4' &gt;&gt; /etc/ppp/options.pptpd<br />echo 'USERNAME pptpd PASSWORD *' &gt;&gt; /etc/ppp/chap-secrets<br /> <br /># system ipv4 forward<br />sysctl_file=/etc/sysctl.conf<br />if grep -xq 'net.ipv4.ip_forward' $sysctl_file; then<br />  sed -i.bak -r -e "s/^.*net.ipv4.ip_forward.*/net.ipv4.ip_forward = 1/" $sysctl_file<br />else<br />  echo 'net.ipv4.ip_forward = 1' &gt;&gt; $sysctl_file<br />fi<br />sysctl -p<br /> <br /># firewalld<br />zone=public<br />firewall-cmd --permanent --new-service=pptp<br />cat &gt;/etc/firewalld/services/pptp.xml&lt;<eof encoding="utf-8" version="1.0" xml=""><br /><service><br />  <port port="1723" protocol="tcp"><br /></port></service><br />EOF<br />firewall-cmd --permanent --zone=$zone --add-service=pptp<br />firewall-cmd --permanent --zone=$zone --add-masquerade<br />firewall-cmd --reload<br /> <br /># start pptpd<br />systemctl start pptpd<br />systemctl enable pptpd.service<br /></eof></code>
+</div>
