@@ -26,10 +26,12 @@ defaults:
     values:
       layout: "post"
 
-# Custom variables
-version: "1.1.0"
-
 # Options
 custom_header: false
 custom_nav_footer: false
 reverse: false
+
+# Category List
+category_archive: 
+  path: "categories"
+  slugify: true
