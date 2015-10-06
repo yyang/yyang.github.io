@@ -41,7 +41,21 @@
 }
 
 #nav {
-  @include nav-position(right);
+  width: 14rem;
+  position: fixed;
+  background-color: $main-color;
+  top: 0;
+  bottom: 0;
+  right: -14rem;
+  color: $background-color;
+  opacity: 0.95;
+  -webkit-transition: all 0.3s ease-in;
+     -moz-transition: all 0.3s ease-in;
+      -ms-transition: all 0.3s ease-in;
+          transition: all 0.3s ease-in;
+  z-index: 1;
+  padding: 72px 0;
+  text-align: center;
   font-family: 'jaf-bernino-sans', 'San Francisco', Helvetica, Arial, sans-serif;
   font-weight: 600;
   text-transform: uppercase;
@@ -49,13 +63,21 @@
 
 /* Toggle class to open menu */
 
-#nav.menu-open {
-  @include open(-14rem);
+#nav.menu-open { 
+  -webkit-transform: translateX(-14rem);
+     -moz-transform: translateX(-14rem);
+      -ms-transform: translateX(-14rem);
+          transform: translateX(-14rem);
+  width: 100%;
 }
 
 @media (min-width: 940px) {
   #nav {
-    @include open(-14rem);
+    -webkit-transform: translateX(-14rem);
+       -moz-transform: translateX(-14rem);
+        -ms-transform: translateX(-14rem);
+            transform: translateX(-14rem);
+    width: 30%;
   }
 }
 
@@ -73,7 +95,12 @@
 /* Icon menu */
 
 #nav-menu {
-  @include icon-position(right);
+  display: block;
+  position: fixed;
+  top: 25px;
+  right: 25px;
+  z-index: 10;
+  height: 24px;
 }
 
 #nav-menu {
