@@ -59,3 +59,19 @@ Both will update the version in `FETCH_HEAD` to the latest, and fetch the versio
 ### 4) Edits under submodules folder 
 
 Git will search for the nearest git repo - so whenever there's a commit it will commit to submodule, very nice.
+
+**-- Update Oct. 12, 2015 --**
+
+### 5) Tracking submodules branches
+
+Accordint to this [Stack Overflow post](http://stackoverflow.com/questions/1777854/git-submodules-specify-a-branch-tag/18797720#18797720), the easiest way to implement submodule is to specify branch during submodule add:
+
+{% hightlight cfg %}
+[submodule "SubmoduleTestRepo"]
+    path = SubmoduleTestRepo
+    url = https://github.com/jzaccone/SubmoduleTestRepo.git
+    branch = master
+{% endhighlight %}
+
+And to fix whatever matter, please refer this post:
+[http://stackoverflow.com/questions/1777854/git-submodules-specify-a-branch-tag/18799234#18799234]
