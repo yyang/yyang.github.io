@@ -66,7 +66,7 @@ Git will search for the nearest git repo - so whenever there's a commit it will 
 
 Accordint to this [Stack Overflow post](http://stackoverflow.com/questions/1777854/git-submodules-specify-a-branch-tag/18797720#18797720), the easiest way to implement submodule is to specify branch during submodule add:
 
-{% hightlight cfg %}
+{% highlight cfg %}
 [submodule "SubmoduleTestRepo"]
     path = SubmoduleTestRepo
     url = https://github.com/jzaccone/SubmoduleTestRepo.git
