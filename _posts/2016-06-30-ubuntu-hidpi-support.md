@@ -2,7 +2,7 @@
 title: "Ubuntu HiDPI Support"
 layout: "post"
 description: 
-categories: [tools]
+categories: [linux]
 author: "Yi Yang"
 ---
 
@@ -16,7 +16,8 @@ After exploring I found the following resources:
 And the final solution would be:
 
 ```lang=bash
-gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{ 'Gdk/WindowScalingFactor':<2>, 'Gdk/UnscaledDPI':<92160> }"
+gsettings set org.gnome.settings-daemon.plugins.xsettings overrides \
+   "{ 'Gdk/WindowScalingFactor':<2>, 'Gdk/UnscaledDPI':<92160> }"
 gsettings set org.gnome.desktop.interface scaling-factor 2
 ```
 
